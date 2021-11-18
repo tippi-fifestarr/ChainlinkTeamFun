@@ -21,6 +21,9 @@ async function login() {
 }
 
 function initApp() {
+  document.querySelector("#register_button").style.cssText += "font-size:large";
+  document.querySelector("#connect_button").style.cssText +=
+    "font-size:x-small";
   document.querySelector("#app").style.display = "block";
   document.querySelector("#submit_button").onclick = submit;
 }
@@ -46,6 +49,7 @@ async function submit() {
   let metadataHash = jsonFile.hash();
   console.log(jsonFile.ipfs());
   let res = await Moralis.Plugins.rarible.lazyMint({
+    // can change chain from rinkeby to mainnet
     chain: "rinkeby",
     userAddress: user.get("ethAddress"),
     tokenType: "ERC721",
@@ -57,9 +61,10 @@ async function submit() {
     "#success_message"
   ).innerHTML = `NFT minted. <a href="https://rinkeby.rarible.com/token/${res.data.result.tokenAddress}:${res.data.result.tokenId}">View NFT`;
   document.querySelector("#success_message").style.display = "block";
+  document.querySelector("#success_message").style.cssText += "font-size:large";
   setTimeout(() => {
     document.querySelector("#success_message").style.display = "none";
-  }, 5000);
+  }, 25000); // originally only displayed for 5 seconds
 }
 
-login();
+document.querySelector("#connect_button").onclick = login;
