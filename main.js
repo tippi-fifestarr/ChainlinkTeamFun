@@ -1,3 +1,5 @@
+// import { Web3Storage } from "web3.storage";
+
 /** Connect to Moralis server */
 const serverUrl = "https://t1mmww7s0knr.usemoralis.com:2053/server";
 const appId = "LvBSg3ioKrsEAbOhX6fpQGfA7wRdzRSQTHMjgBPE";
@@ -22,8 +24,8 @@ async function login() {
 
 function initApp() {
   document.querySelector("#register_button").style.cssText += "font-size:large";
-  document.querySelector("#connect_button").style.cssText +=
-    "font-size:x-small";
+  document.querySelector("#connect_button").style.display = "none";
+  document.querySelector("#noob_button").style.display = "none";
   document.querySelector("#app").style.display = "block";
   document.querySelector("#submit_button").onclick = submit;
 }
@@ -62,9 +64,12 @@ async function submit() {
   ).innerHTML = `NFT minted. <a href="https://rinkeby.rarible.com/token/${res.data.result.tokenAddress}:${res.data.result.tokenId}">View NFT`;
   document.querySelector("#success_message").style.display = "block";
   document.querySelector("#success_message").style.cssText += "font-size:large";
+  document.querySelector("#later_button").style.display = "block";
+  document.querySelector(".delete").style.display = "none";
+  // document.querySelector("#tr").style.display = "none";
   setTimeout(() => {
-    document.querySelector("#success_message").style.display = "none";
-  }, 25000); // originally only displayed for 5 seconds
+    document.querySelector(".registration").style.display = "none";
+  }, 18000); // originally only displayed for 5 seconds
 }
 
 document.querySelector("#connect_button").onclick = login;

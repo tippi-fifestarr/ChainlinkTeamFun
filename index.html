@@ -28,7 +28,7 @@
       #app {
         display: none;
         margin-top: 10px;
-        height: 400px;
+        height: auto;
         background-color: white;
         padding: 20px;
         border-radius: 20px;
@@ -47,6 +47,9 @@
         border-radius: 4px;
         display: none;
       }
+      #later_button {
+        display: none;
+      }
     </style>
   </head>
 
@@ -56,11 +59,18 @@
       <div class="row">
         <section class="coming-soon">
           <div>
-            <h2>Time Remaining</h2>
-            <!-- can add styling directly to html -->
-            <p style="text-align: center">
-              Register for Hackathon Activities Sidechain (365?!)
-            </p>
+            <button
+              class="btn btn-primary btn-lg btn-block"
+              id="connect_button"
+            >
+              Connect to Web3 (nothing happens? <br />
+              Try other buttons)
+            </button>
+            <div id="tr">
+              <h2>Time Remaining</h2>
+              <!-- can add styling directly to html -->
+              <p>Register for Hackathon Activities Sidechain (365?!)</p>
+            </div>
             <div class="countdown">
               <div class="container-day">
                 <h3 class="day">time</h3>
@@ -81,12 +91,6 @@
             </div>
           </div>
           <div class="delete">
-            <button
-              class="btn btn-primary btn-lg btn-block"
-              id="connect_button"
-            >
-              Connect to Web3
-            </button>
             <a
               href="https://docs.google.com/document/d/1S_Hk7FVBESCXYyDWEihMUp7PqGOqYTgrznsDRKMYnyE/edit?usp=sharing"
             >
@@ -94,12 +98,7 @@
                 What's a Metamask?
               </button>
             </a>
-            <button
-              class="btn btn-secondary btn-lg btn-block"
-              id="later_button"
-            >
-              Take me to the missions!
-            </button>
+
             <a href="#app">
               <button
                 class="btn btn-success btn-lg btn-block"
@@ -116,20 +115,43 @@
           </div>
         </section>
         <script src="./js/countdown.js"></script>
+        <div id="success_message"></div>
         <section class="registration">
           <div class="title">Register and Mint NFT</div>
 
           <div id="app" class="col-md-6 offset-md-3">
-            <div id="success_message"></div>
-            <div class="form_element">
-              <input class="form-control type="text" id="input_name" name="name"
-              placeholder="my_name#1234 (discord username)">
+            <div class="form_element form-floating">
+              <input
+                class="form-control"
+                type="text"
+                id="input_name"
+                name="name"
+                placeholder="Hackathon Username:"
+              />
+              <label for="input_name">My Hackathon Username:</label>
             </div>
-            <div class="form_element">
-              <input class="form-control type="text" id="input_description"
-              name="description" placeholder="strengths, weaknesses,
-              experiences">
+            <div class="form_element form-floating">
+              <input
+                class="form-control"
+                type="text"
+                id="input_description"
+                name="description"
+                placeholder="strengths, weaknesses, experiences"
+              />
+              <label for="input_description"
+                >About Me: (strengths, weaknesses, experiences)</label
+              >
             </div>
+            <div class="form-floating form_element mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="I joined the Hackathon because..."
+              />
+              <label for="floatingInput">My Hackathon Motivation:</label>
+            </div>
+
             <div class="form_element">
               <input
                 class="form-control"
@@ -149,6 +171,9 @@
             </div>
           </div>
         </section>
+        <button class="btn btn-secondary btn-lg btn-block" id="later_button">
+          Take me to the missions!
+        </button>
       </div>
     </div>
     <script type="text/javascript" src="./main.js"></script>
