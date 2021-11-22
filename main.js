@@ -64,12 +64,14 @@ async function submit() {
   ).innerHTML = `NFT minted. <a href="https://rinkeby.rarible.com/token/${res.data.result.tokenAddress}:${res.data.result.tokenId}">View NFT`;
   document.querySelector("#success_message").style.display = "block";
   document.querySelector("#success_message").style.cssText += "font-size:large";
+  document.querySelector("#register_button").style.display = "none";
   document.querySelector("#later_button").style.display = "block";
   document.querySelector(".delete").style.display = "none";
   // document.querySelector("#tr").style.display = "none";
+  window.scrollTo(0, 0);
   setTimeout(() => {
     document.querySelector(".registration").style.display = "none";
-  }, 18000); // originally only displayed for 5 seconds
+  }, 3600); // originally only displayed for 5 seconds
 }
 
 document.querySelector("#connect_button").onclick = login;
