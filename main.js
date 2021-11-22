@@ -23,6 +23,7 @@ async function login() {
 }
 
 function initApp() {
+  document.querySelector("#register_button").disabled = false;
   document.querySelector("#register_button").style.cssText += "font-size:large";
   document.querySelector("#connect_button").style.display = "none";
   document.querySelector("#noob_button").style.display = "none";

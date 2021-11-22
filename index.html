@@ -67,23 +67,24 @@
               Try other buttons)
             </button>
             <div id="tr">
-              <h2>Time Remaining</h2>
+              <h2>Registration Time</h2>
               <!-- can add styling directly to html -->
-              <p>Register for Hackathon Activities Sidechain (365)</p>
+              <p>Chainlink for Hackathon Activities Sidechain (365)</p>
               <a href="#app">
                 <button
                   class="btn btn-success btn-lg btn-block"
                   id="register_button"
+                  disabled
                 >
-                  Register below!
+                  Time to Register!
                 </button>
               </a>
-              <button
-                class="btn btn-secondary btn-lg btn-block"
-                id="later_button"
-              >
-                Take me to the missions!
-              </button>
+              <div id="later_button">
+                <button class="btn btn-secondary btn-lg btn-block" id="l_butt">
+                  Take me to the missions!
+                </button>
+                <label for="l_button">Already registered?</label>
+              </div>
               <div id="success_message"></div>
             </div>
             <div class="countdown">
