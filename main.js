@@ -11,7 +11,10 @@ let user = Moralis.User.current();
 async function login() {
   if (!user) {
     try {
-      user = await Moralis.authenticate({ signingMessage: "Hello World!" });
+      user = await Moralis.authenticate({
+        signingMessage:
+          "This is simply to connect and authenticate you are human",
+      });
       initApp();
     } catch (error) {
       console.log(error);
@@ -27,6 +30,7 @@ function initApp() {
   document.querySelector("#register_button").style.cssText += "font-size:large";
   document.querySelector("#connect_button").style.display = "none";
   document.querySelector("#noob_button").style.display = "none";
+  document.querySelector("#noob_button2").style.display = "none";
   document.querySelector("#app").style.display = "block";
   document.querySelector("#submit_button").onclick = submit;
 }
@@ -41,6 +45,7 @@ async function submit() {
   let metadata = {
     name: document.querySelector("#input_name").value,
     description: document.querySelector("#input_description").value,
+    motivation: document.querySelector("#floatingInput").value,
     image: "/ipfs/" + imageHash,
   };
   console.log(metadata);
@@ -72,7 +77,23 @@ async function submit() {
   window.scrollTo(0, 0);
   setTimeout(() => {
     document.querySelector(".registration").style.display = "none";
-  }, 3600); // originally only displayed for 5 seconds
+  }, 600); // originally only displayed for 5 seconds
+  document.querySelector("#l_butt").onclick = goMission;
+}
+
+async function goMission() {
+  const now = new Date().getTime();
+  let metadata = {
+    name: document.querySelector("#input_name2").value,
+    timestamp: now,
+  };
+  const jsonFile = new Moralis.File("metadata.json", {
+    base64: btoa(JSON.stringify(metadata)),
+  });
+  await jsonFile.saveIPFS();
+
+  let metadataHash = jsonFile.hash();
+  console.log(jsonFile.ipfs());
 }
 
 document.querySelector("#connect_button").onclick = login;

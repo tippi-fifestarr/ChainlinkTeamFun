@@ -1,6 +1,6 @@
 const countdown = () => {
   // Date format is month date, year hours:minutes:seconds
-  const countDate = new Date("November 25, 2021 15:00:00").getTime(); //returns in ms
+  const countDate = new Date("December 10, 2021 11:00:00").getTime(); //returns in ms
   // get the difference between future date and current time
   const now = new Date().getTime();
   const gap = countDate - now;
